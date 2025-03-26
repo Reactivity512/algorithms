@@ -1,6 +1,6 @@
 namespace Algorithms.Tests;
 
-public class InsertionSortTests
+public sealed class InsertionSortTests
 {
     // Вспомогательный метод для проверки сортировки
     private static void TestSort(int[] input, int[] expected)

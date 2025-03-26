@@ -1,6 +1,6 @@
 namespace Algorithms.Tests;
 
-public class QuickRecursiveSortTests
+public sealed class QuickRecursiveSortTests
 {
     // Вспомогательный метод для проверки сортировки
     private static void TestSort(int[] input, int[] expected)

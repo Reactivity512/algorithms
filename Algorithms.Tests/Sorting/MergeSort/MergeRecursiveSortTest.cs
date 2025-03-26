@@ -1,6 +1,6 @@
 namespace Algorithms.Tests;
 
-public class MergeRecursiveSortTests
+public sealed class MergeRecursiveSortTests
 {
     // Вспомогательный метод для проверки сортировки
     private static void TestSort(int[] input, int[] expected)

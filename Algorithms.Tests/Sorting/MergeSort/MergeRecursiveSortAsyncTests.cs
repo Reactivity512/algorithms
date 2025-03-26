@@ -1,6 +1,6 @@
 namespace Algorithms.Tests;
 
-public class MergeRecursiveSortAsyncTests
+public sealed class MergeRecursiveSortAsyncTests
 {
     // Вспомогательный метод для проверки сортировки
     private static async Task TestSortAsync(int[] input, int[] expected)

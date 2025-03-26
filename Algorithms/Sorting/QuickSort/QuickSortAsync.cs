@@ -1,6 +1,6 @@
 namespace Algorithms.Sorting;
 
-public class QuickSortAsync : QuickSort
+public sealed class QuickSortAsync : QuickSort
 {
     public static async Task RecursiveSortAsync(int[] array)
     {

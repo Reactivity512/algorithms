@@ -1,6 +1,6 @@
 namespace Algorithms.Tests;
 
-public class QuickIterativeSortTests
+public sealed class QuickIterativeSortTests
 {
     // Вспомогательный метод для проверки сортировки
     private static void TestSort(int[] input, int[] expected)

@@ -1,6 +1,6 @@
 namespace Algorithms.Tests;
 
-public class QuickRecursiveSortAsyncTests
+public sealed class QuickRecursiveSortAsyncTests
 {
     // Вспомогательный метод для проверки сортировки
     private static async Task TestSortAsync(int[] input, int[] expected)

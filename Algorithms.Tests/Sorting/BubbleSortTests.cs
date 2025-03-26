@@ -1,6 +1,6 @@
 namespace Algorithms.Tests;
 
-public class BubbleSortTests
+public sealed class BubbleSortTests
 {
     // Вспомогательный метод для проверки сортировки
     private static void TestSort(int[] input, int[] expected)
