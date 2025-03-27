@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Algorithms.Sorting;
 
-public class MergeSortAsync : MergeSort
+public sealed class MergeSortAsync : MergeSort
 {
     /// <summary>
     /// Асинхронная реализация лучше подходит для больших массивов, где можно эффективно использовать многопоточность.

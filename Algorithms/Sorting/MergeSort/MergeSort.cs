@@ -1,6 +1,6 @@
 namespace Algorithms.Sorting;
 
-public sealed class MergeSort
+public class MergeSort
 {
     /// <summary>
     /// Итеративный подход не использует стек вызовов (безопасность для больших массивов) и не требует дополнительной памяти для стека вызовов
