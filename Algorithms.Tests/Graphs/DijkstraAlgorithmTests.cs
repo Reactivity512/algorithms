@@ -1,9 +1,9 @@
 namespace Algorithms.Graphs.Tests;
 
-public class DijkstraAlgorithmTests
+public sealed class DijkstraAlgorithmTests
 {
     // Вспомогательный метод для создания графа
-    private Dictionary<int, Dictionary<int, int>> CreateTestGraph()
+    private static Dictionary<int, Dictionary<int, int>> CreateTestGraph()
     {
         return new Dictionary<int, Dictionary<int, int>>
         {
@@ -27,9 +27,9 @@ public class DijkstraAlgorithmTests
 
         // Assert
         Assert.Equal(0, distances[0]);
-        Assert.Equal(3, distances[1]); // Путь: 0 → 2 → 1 (вес 1 + 2)
+        Assert.Equal(3, distances[1]);
         Assert.Equal(1, distances[2]);
-        Assert.Equal(4, distances[3]); // Путь: 0 → 2 → 1 → 3 (вес 1 + 2 + 1)
+        Assert.Equal(4, distances[3]);
     }
 
     // Граф с одной вершиной
@@ -39,7 +39,7 @@ public class DijkstraAlgorithmTests
         // Arrange
         var graph = new Dictionary<int, Dictionary<int, int>>
         {
-            [0] = new Dictionary<int, int>()
+            [0] = []
         };
         var dijkstra = new DijkstraAlgorithm(graph);
 
