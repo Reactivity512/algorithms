@@ -14,27 +14,16 @@ public sealed class DepthFirstSearchTest
         return g;
     }
 
-    private static string RunDFS(DepthFirstSearch g, int startVertex)
-    {
-        var consoleOutput = new StringWriter();
-        Console.SetOut(consoleOutput);
-        g.DFSRecursive(startVertex);
-        return consoleOutput.ToString().Trim();
-    }
-
     // Обход из вершины 0
     [Fact]
     public void DFS_FromVertex0_ReturnsCorrectOrder()
     {
         // Arrange
         var g = CreateTestGraph();
-        string expected = "0 1 3 5 2 4";
+        List<int> expected = [0, 1, 3, 5, 2, 4];
 
-        // Act
-        string result = RunDFS(g, 0);
-
-        // Assert
-        Assert.Equal(expected, result);
+        // Act & Assert
+        Assert.Equal(expected, g.DFSRecursive(0));
     }
 
     // Обход из вершины 2
@@ -43,13 +32,10 @@ public sealed class DepthFirstSearchTest
     {
         // Arrange
         var g = CreateTestGraph();
-        string expected = "2 4 5";
+        List<int> expected = [2, 4, 5];
 
-        // Act
-        string result = RunDFS(g, 2);
-
-        // Assert
-        Assert.Equal(expected, result);
+        // Act & Assert
+        Assert.Equal(expected, g.DFSRecursive(2));
     }
 
     // Обход изолированной вершины
@@ -60,13 +46,10 @@ public sealed class DepthFirstSearchTest
         var g = new DepthFirstSearch(3);
         g.AddEdge(0, 1);
         // Вершина 2 изолирована
-        string expected = "2";
+        List<int> expected = [2];
 
-        // Act
-        string result = RunDFS(g, 2);
-
-        // Assert
-        Assert.Equal(expected, result);
+        // Act & Assert
+        Assert.Equal(expected, g.DFSRecursive(2));
     }
 
     // Пустой граф
@@ -89,13 +72,10 @@ public sealed class DepthFirstSearchTest
         g.AddEdge(0, 1);
         g.AddEdge(1, 2);
         g.AddEdge(2, 0);
-        string expected = "0 1 2";
+        List<int> expected = [0, 1, 2];
 
-        // Act
-        string result = RunDFS(g, 0);
-
-        // Assert
-        Assert.Equal(expected, result);
+        // Act & Assert
+        Assert.Equal(expected, g.DFSRecursive(0));
     }
 
     // Несуществующая стартовая вершина
@@ -129,16 +109,9 @@ public sealed class DepthFirstSearchTest
         g.AddEdge(0, 2);
         g.AddEdge(1, 3);
         g.AddEdge(2, 4);
-        string expected = "0 1 3 2 4";
+        List<int> expected = [0, 1, 3, 2, 4];
 
-        var consoleOutput = new StringWriter();
-        Console.SetOut(consoleOutput);
-        
-        // Act
-        g.DFSIterative(0); // Используем итеративную версию
-        string result = consoleOutput.ToString().Trim();
-
-        // Assert
-        Assert.Equal(expected, result);
+        // Act & Assert
+        Assert.Equal(expected, g.DFSIterative(0));
     }
 }

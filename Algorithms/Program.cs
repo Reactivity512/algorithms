@@ -27,7 +27,7 @@ namespace Algorithms
             // Пример алгоритма Дейкстры
             var graph = new Dictionary<int, Dictionary<int, int>>
             {
-                [0] = new Dictionary<int, int> { [1] = -4, [2] = 1 },
+                [0] = new Dictionary<int, int> { [1] = 4, [2] = 1 }, // поправить отрицательные веса
                 [1] = new Dictionary<int, int> { [3] = 1 },
                 [2] = new Dictionary<int, int> { [1] = 2, [3] = 5 },
                 [3] = new Dictionary<int, int> { }

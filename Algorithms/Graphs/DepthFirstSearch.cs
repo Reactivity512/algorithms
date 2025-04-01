@@ -21,24 +21,24 @@ public sealed class DepthFirstSearch
     }
 
     // Рекурсивный метод DFS
-    private void DFSUtil(int v, bool[] visited)
+    private void DFSUtil(int current, bool[] visited, List<int> result)
     {
         // Помечаем текущую вершину как посещенную
-        visited[v] = true;
-        Console.Write(v + " ");
+        visited[current] = true;
+        result.Add(current);
 
         // Рекурсивно посещаем все смежные вершины
-        foreach (int neighbor in adjacencyList[v])
+        foreach (int neighbor in adjacencyList[current])
         {
             if (!visited[neighbor])
             {
-                DFSUtil(neighbor, visited);
+                DFSUtil(neighbor, visited, result);
             }
         }
     }
 
     // Метод для запуска DFS
-    public void DFSRecursive(int startVertex)
+    public List<int> DFSRecursive(int startVertex)
     {
         if (startVertex < 0 || startVertex >= vertices)
         {
@@ -48,11 +48,14 @@ public sealed class DepthFirstSearch
 
         // Массив для отслеживания посещенных вершин
         bool[] visited = new bool[vertices];
+        var result = new List<int>(vertices);
 
-        DFSUtil(startVertex, visited);
+        DFSUtil(startVertex, visited, result);
+
+        return result;
     }
 
-    public void DFSIterative(int startVertex)
+    public List<int> DFSIterative(int startVertex)
     {
         if (startVertex < 0 || startVertex >= vertices)
         {
@@ -61,26 +64,28 @@ public sealed class DepthFirstSearch
         }
         
         bool[] visited = new bool[vertices];
-        Stack<int> stack = new Stack<int>();
-
-        visited[startVertex] = true;
+        var result = new List<int>(vertices);
+        var stack = new Stack<int>();
         stack.Push(startVertex);
 
         while (stack.Count > 0)
         {
             int current = stack.Pop();
-            Console.Write(current + " ");
-
-            // Обрабатываем соседей в обратном порядке для соответствия рекурсивной версии
+            if (visited[current]) continue;
+            
+            visited[current] = true;
+            result.Add(current);
+            
             for (int i = adjacencyList[current].Count - 1; i >= 0; i--)
             {
                 int neighbor = adjacencyList[current][i];
                 if (!visited[neighbor])
                 {
-                    visited[neighbor] = true;
                     stack.Push(neighbor);
                 }
             }
         }
+
+        return result;
     }
 }
