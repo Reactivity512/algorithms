@@ -1,0 +1,13 @@
+name: Semgrep
+on:
+  pull_request:
+    branches: [ main, master ]   # запуск при PR в эти ветки
+
+jobs:
+  semgrep:
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    steps:
+      - uses: actions/checkout@v4
+      - run: semgrep ci   # или semgrep scan --config auto для OSS-версии
