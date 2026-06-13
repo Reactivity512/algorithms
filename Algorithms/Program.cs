@@ -111,5 +111,16 @@ namespace Algorithms
 
             Console.WriteLine($"После удаления 6 и 17: {string.Join(" ", bTree.Traverse())}");
         }
+
+        public static bytes[] GetFileBad(string filename)
+        {
+            if (string.IsNullOrEmpty(filename)) 
+            {   
+                throw new ArgumentNullException("error"); 
+            }
+            string filepath = Path.Combine("\\FILESHARE\images", filename); 
+
+            return File.ReadAllBytes(filepath);
+        }
     }
 }
